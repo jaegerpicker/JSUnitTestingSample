@@ -23,6 +23,9 @@
     "url": "https://github.com/jaegerpicker/JSUnitTestingSample/issues"
   },
   "dependencies": {
-    "actionhero": "~8.0.3"
+    "actionhero": "~8.0.3",
+    "grunt": "~0.4.4",
+    "grunt-cli": "~0.1.13",
+    "jshint": "~2.4.4"
   }
 }
