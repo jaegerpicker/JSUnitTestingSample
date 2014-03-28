@@ -1,4 +1,4 @@
-exports.default = { 
+exports.default = {
   redis: function(api){
     return {
       fake: true,
@@ -7,11 +7,11 @@ exports.default = {
       password: null,
       options: null,
       database: 0
-    }
+    };
   }
-}
+};
 
-exports.test = { 
+exports.test = {
   redis: function(api){
     var toFakeRedis = false;
     if(process.env.fakeredis == 'true'){
@@ -25,6 +25,6 @@ exports.test = {
       'password': null,
       'options': null,
       'DB': 2
-    }
+    };
   }
-}
+};

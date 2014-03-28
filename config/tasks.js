@@ -1,4 +1,4 @@
-exports.default = { 
+exports.default = {
   tasks: function(api){
     return {
       // Should this node run a scheduler to promote delayed tasks?
@@ -11,9 +11,9 @@ exports.default = {
       timeout: 5000,
       // What redis server should we connect to for tasks / delayed jobs?
       redis: api.config.redis
-    }
+    };
   }
-}
+};
 
 exports.test = {
   tasks: function(api){
@@ -22,6 +22,6 @@ exports.test = {
       timeout: 100,
       queues: [],
       redis: api.config.redis
-    }  
+    };
   }
-}
+};

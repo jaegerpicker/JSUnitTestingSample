@@ -55,12 +55,12 @@ exports.default = {
         // When true, returnErrorCodes will modify the response header for http(s) clients if connection.error is not null.
         //  You can also set connection.rawConnection.responseHttpCode to specify a code per request.
         returnErrorCodes: false
-      }
+      };
     }
   }
-}
+};
 
-exports.production = { 
+exports.production = {
   servers: {
     web: function(api){
       return {
@@ -69,13 +69,13 @@ exports.production = {
           serverInformation: false,
           requesterInformation: false
         }
-      }
+      };
     }
   }
-}
+};
 
 exports.test = {
-  servers: { 
+  servers: {
     web: function(api){
       return {
         secure: false,
@@ -85,7 +85,7 @@ exports.test = {
           serverInformation: true,
           requesterInformation: true
         }
-      }
+      };
     }
   }
-}
+};

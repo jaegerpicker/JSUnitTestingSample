@@ -1,4 +1,4 @@
-exports.default = { 
+exports.default = {
   stats: function(api){
     return {
       // how often should the server write its stats to redis?
@@ -8,15 +8,15 @@ exports.default = {
       keys: [
         'actionhero:stats'
       ]
-    }
+    };
   }
-}
+};
 
-exports.test = { 
+exports.test = {
   stats: function(api){
     return {
       writeFrequency: 0,
       keys: ['test:stats']
-    }
+    };
   }
-}
+};

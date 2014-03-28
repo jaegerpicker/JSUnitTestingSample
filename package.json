@@ -2,7 +2,7 @@
   "name": "JSUnitTestingSampleProject",
   "version": "0.0.0",
   "description": "A sample JavaScript (node.js sever side and ember.js client side) showing my prefered unit testing/js project setup style",
-  "main": "index.js",
+  "main": "",
   "scripts": {
     "test": "testem"
   },

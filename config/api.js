@@ -7,9 +7,9 @@ exports.default = {
       //  Be sure that every server you run has a unique ID (which will happen when generated dynamically)
       //  id: 'myActionHeroServer',
       // A unique token to your application that servers will use to authenticate to each other
-      serverToken: 'change-me',
+      serverToken: '888uuu999iii555jjj333',
       // The welcome message seen by TCP and webSocket clients upon connection
-      welcomeMessage: 'Hello! Welcome to the actionhero api',
+      welcomeMessage: 'This is jaegerpickers Unit Testing in JavaScript sample api',
       // The body message to accompany 404 (file not found) errors regarding flat files
       flatFileNotFoundMessage: 'Sorry, that file is not found :(',
       // The message to accompany 500 errors (internal server errors)
@@ -38,7 +38,7 @@ exports.default = {
         'log':         [ __dirname + '/../log'          ] ,
         'server':      [ __dirname + '/../servers'      ] ,
         'initializer': [ __dirname + '/../initializers' ] ,
-        'plugin':      [ __dirname + '/../node_modules' ] 
+        'plugin':      [ __dirname + '/../node_modules' ]
       },
       // list of actionhero plugins you want to load
       plugins: [
@@ -51,11 +51,11 @@ exports.default = {
         //'secureRoom': {authorized: true},
         'defaultRoom': {}
       }
-    }
+    };
   }
-}
+};
 
-exports.test = { 
+exports.test = {
   general: function(api){
     return {
       id: 'test-server',
@@ -64,16 +64,15 @@ exports.test = {
         'defaultRoom': {},
         'otherRoom': {},
         'secureRoom': {authorized: true}
-      },
-      developmentMode: true
-    }
+      }
+    };
   }
-}
+};
 
-exports.production = { 
+exports.production = {
   general: function(api){
-    return {  
+    return {
       developmentMode: false
-    }
+    };
   }
-}
+};
