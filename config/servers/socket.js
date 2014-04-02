@@ -11,10 +11,10 @@ exports.default = {
         port: 5000,
         // which IP to listen on (use 0.0.0.0 for all)
         bindIP: '0.0.0.0'
-      }
+      };
     }
   }
-}
+};
 
 exports.test = {
   servers: {
@@ -23,7 +23,7 @@ exports.test = {
         enabled: true,
         port: 5001,
         secure: false
-      }
+      };
     }
   }
-}
+};

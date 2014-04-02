@@ -11,9 +11,9 @@ exports.default = {
       redis: api.config.redis,
       // redis prefix for faye keys
       namespace: 'faye:'
-    }
+    };
   }
-}
+};
 
 exports.test = {
   faye: function(api){
@@ -23,6 +23,6 @@ exports.test = {
       ping: null,
       redis: api.config.redis,
       namespace: 'faye:'
-    }
+    };
   }
-}
+};

@@ -13,9 +13,9 @@
       self.options[i] = options[i];
     }
 
-    if(options && options.faye != null){
+    if(options && options.faye !== null){
       self.faye = options.faye;
-    } else if(window.Faye != null){
+    } else if(window.Faye !== null){
       self.faye = window.Faye;
     } else {
       try{
@@ -24,12 +24,12 @@
         self.faye = null;
       }
     }
-  }
+  };
 
   actionheroClient.prototype.defaults = function(){
     var host;
 
-    if(typeof window != 'undefined'){ host = window.location.origin }
+    if(typeof window != 'undefined'){ host = window.location.origin; }
     return {
       host:            host,
       fayePath:        '/faye',
@@ -39,8 +39,8 @@
       connectionDelay:  200,
       timeout:          60 * 1000,
       retry:            10
-    }
-  }
+    };
+  };
 
   ////////////////
   // CONNECTION //
@@ -48,7 +48,7 @@
 
   actionheroClient.prototype.connect = function(callback){
     var self = this;
-    
+
     self.client = new self.faye.Client(self.options.host + self.options.fayePath, {
       retry: self.options.retry,
       timeout: self.options.timeout
@@ -67,7 +67,7 @@
 
       setTimeout(function(){
         self.detailsView(function(details){
-          if(self.room != null){
+          if(self.room !== null){
             self.send({event: 'roomChange', room: self.room});
           }
           callback(null, details);
@@ -88,13 +88,13 @@
       self.emit('connected');
       if(previousState === 'reconnecting'){
         self.detailsView(function(details){
-          if(self.room != null){
+          if(self.room !== null){
             self.send({event: 'roomChange', room: self.room});
           }
         });
       }
     });
-  }
+  };
 
   ///////////////
   // MESSAGING //
@@ -108,10 +108,10 @@
         self.callbacks[self.messageCount] = callback;
       }
       self.client.publish(self.channel, args);
-    } else if(typeof callback == 'function'){ 
-      callback({error: 'not connected', state: self.state}) 
+    } else if(typeof callback == 'function'){
+      callback({error: 'not connected', state: self.state});
     }
-  }
+  };
 
   actionheroClient.prototype.handleMessage = function(message){
     var self = this;
@@ -125,32 +125,32 @@
       self.emit('say', message);
     } else if(message.context === 'alert'){
       self.emit('alert', message);
-    } else if(message.welcome != null && message.context == 'api'){
+    } else if(message.welcome !== null && message.context == 'api'){
       self.welcomeMessage = message.welcome;
       self.emit('welcome', message);
     } else if(message.context === 'api'){
       self.emit('api', message);
     }
-  }
+  };
 
   /////////////
   // ACTIONS //
   /////////////
 
   actionheroClient.prototype.action = function(action, params, callback){
-    if(callback == null && typeof params == 'function'){
+    if(callback === null && typeof params == 'function'){
       callback = params;
       params = null;
     }
-    if(params == null){ params = {} }
+    if(params === null){ params = {}; }
     params.action = action;
-    
+
     if(this.state !== 'connected'){
       this.actionWeb(params, callback);
     }else{
       this.actionWebSocket(params, callback);
     }
-  }
+  };
 
   actionheroClient.prototype.actionWeb = function(params, callback){
     var timeoutTimer = setTimeout(function(){
@@ -168,23 +168,23 @@
           callback(xmlhttp.statusText, xmlhttp.responseText);
         }
       }
-    }
-    var qs = "?"
+    };
+    var qs = "?";
     for(var i in params){
       qs += i + "=" + params[i] + "&";
     }
     var method = 'GET';
-    if(params.httpMethod != null){
+    if(params.httpMethod !== null){
       method = params.httpMethod;
     }
     var url = this.options.host + this.options.apiPath + qs;
     xmlhttp.open(method, url, true);
     xmlhttp.send();
-  }
+  };
 
   actionheroClient.prototype.actionWebSocket = function(params, callback){
     this.send({event: 'action',params: params}, callback);
-  }
+  };
 
   //////////////
   // COMMANDS //
@@ -192,45 +192,45 @@
 
   actionheroClient.prototype.say = function(message, callback){
     this.send({event: 'say', message: message}, callback);
-  }
+  };
 
   actionheroClient.prototype.file = function(file, callback){
     this.send({event: 'file', file: file}, callback);
-  }
+  };
 
   actionheroClient.prototype.detailsView = function(callback){
     this.send({event: 'detailsView'}, callback);
-  }
+  };
 
   actionheroClient.prototype.roomView = function(callback){
     this.send({event: 'roomView'}, callback);
-  }
+  };
 
   actionheroClient.prototype.roomChange = function(room, callback){
     this.room = room;
     this.send({event: 'roomChange', room: room}, callback);
-  }
+  };
 
   actionheroClient.prototype.roomLeave = function(callback){
     this.send({event: 'roomLeave'}, callback);
-  }
+  };
 
   actionheroClient.prototype.listenToRoom = function(room, callback){
     this.send({event: 'listenToRoom', room: room}, callback);
-  }
+  };
 
   actionheroClient.prototype.silenceRoom = function(room, callback){
     this.send({event: 'silenceRoom', room: room}, callback);
-  }
+  };
 
   actionheroClient.prototype.documentation = function(callback){
     this.send({event: 'documentation'}, callback);
-  }
+  };
 
   actionheroClient.prototype.disconnect = function(){
     this.state = 'disconnected';
     this.client.disconnect();
-  }
+  };
 
   /////////////
   // HELPERS //
@@ -238,32 +238,32 @@
 
   actionheroClient.prototype.on = function(event, callback){
     var self = this;
-    if(self.events[event] == null){
+    if(self.events[event] === null){
       self.events[event] = {};
     }
     var key = self.randomString();
     self.events[event][key] = callback;
     return key;
-  }
+  };
 
   actionheroClient.prototype.emit = function(event, data){
     var self = this;
-    if(self.events[event] != null){
+    if(self.events[event] !== null){
       for(var i in self.events[event]){
         self.events[event][i](data);
       }
     }
-  }
+  };
 
   actionheroClient.prototype.removeListener = function(event, key){
     var self = this;
     delete self.events[event][key];
-  }
+  };
 
   actionheroClient.prototype.removeAllListeners = function(event){
     var self = this;
     delete self.events[event];
-  }
+  };
 
   actionheroClient.prototype.randomString = function(){
     var seed = "";
@@ -272,8 +272,8 @@
       seed += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     seed += '-' + new Date().getTime();
-    return seed
-  }
+    return seed;
+  };
 
   exports.actionheroClient = actionheroClient;
 
