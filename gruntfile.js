@@ -1,4 +1,6 @@
-var grunt = require('grunt'), fs = require('fs'), path = require('path');
+var grunt = require('grunt'), fs = require('fs'), path = require('path'),
+    liveReload = require('grunt-contrib-livereload/lib/utils'),
+    wrapup = require('wrapup');
 
 var actionheroRoot = function(){
   var rv;
@@ -32,7 +34,66 @@ var init = function(fn, configChanges){
   actionhero.initialize({configChanges: configChanges}, function(err, api){
     fn(api, actionhero);
   });
+  var plugins = [
+    'grunt-regarde',
+		'grunt-contrib-connect',
+		'grunt-contrib-livereload',
+		'grunt-testem'
+  ];
+  plugins.forEach(function(plugin) {
+    grunt.loadNpmTasks(plugin);
+  });
 };
+
+grunt.initConfig({
+  connect: {
+    livereload: {
+      options: {
+        port: 9001,
+        middleware: function(connect, options) {
+          var mountPath = path.resolve('.');
+          return [
+            liveReload.livereloadSnippet,
+            connect.static(mountPath),
+            connect.directory(mountPath)
+          ];
+        }
+      }
+    }
+  },
+  testem: {
+    options: {
+      launch_in_ci: [
+        'firefox',
+        'chrome',
+        'safari',
+        'phantomjs'
+      ]
+    },
+    main: {
+      files: {
+        'tests.xml': [
+          'testem.json'
+        ]
+      }
+    }
+  },
+  regarde: {
+    web: {
+      files: [
+      'public/*.html',
+      'public/css/*.css',
+      'public/css/**/*.css',
+      'public/javascript/*.js'
+      ],
+      tasks: ['livereload']
+    },
+    wrapup: {
+      files: ['public/javascript/libs/core.js'],
+      tasks: ['build']
+    }
+  }
+});
 
 grunt.registerTask('list','List your actions and metadata',function(){
   var done = this.async();
