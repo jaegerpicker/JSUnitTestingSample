@@ -1,0 +1,19 @@
+{
+  "name": "JSUnitTestingSample",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jaegerpicker/JSUnitTestingSample",
+  "authors": [
+    "Shawn Campbell <jaegerpicker@gmail.com>"
+  ],
+  "description": "A sample of setting up package management and unit testing for a javascript app",
+  "main": "public/javascript/index.js",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

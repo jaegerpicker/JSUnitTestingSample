@@ -142,3 +142,32 @@ grunt.registerTask('loadCache','Set the cache from a file (overwrites existing c
     });
   });
 });
+
+//Custom grunt tasks
+grunt.registerTask('runtests', 'Run all tests both node.js and client side', function() {
+  var done = this.async();
+  init(function(api) {
+
+  });
+});
+
+grunt.registerTask('runServerTests', 'Run server side node.js tests', function() {
+  var done = this.async();
+  init(function(api) {
+
+  });
+});
+
+grunt.registerTask('runClientTests', 'Run client side tests', function() {
+  var done = this.async();
+  init(function(api) {
+
+  });
+});
+
+grunt.registerTask('testem', 'Run testem', function() {
+  var done = this.async();
+  init(function(api) {
+
+  });
+});
