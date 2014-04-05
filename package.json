@@ -39,6 +39,7 @@
     "phantomjs": "~1.9.7-3",
     "mocha-phantomjs": "~3.3.2",
     "jscoverage": "~0.3.8",
-    "json2htmlcov": "~0.1.1"
+    "json2htmlcov": "~0.1.1",
+    "mongoose": "~3.8.8"
   }
 }
