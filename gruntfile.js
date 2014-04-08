@@ -43,6 +43,10 @@ var init = function(fn, configChanges){
   plugins.forEach(function(plugin) {
     grunt.loadNpmTasks(plugin);
   });
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-shell');
+
+  grunt.registerTask('shell:nodemon');
 };
 
 grunt.initConfig({
@@ -92,7 +96,29 @@ grunt.initConfig({
       files: ['public/javascript/libs/core.js'],
       tasks: ['build']
     }
-  }
+  },
+  nodemon: {
+    dev: {
+      options: {
+        file: 'server.js',
+        nodeArgs: ['--debug'],
+        env: {
+          PORT: '8282'
+        }
+      }
+    }
+  },
+  serverFile: 'server.js',
+    shell: {
+      nodemon: {
+        command: 'nodemon <%= serverFile %>',
+        options: {
+          stdout: true,
+          stderr: true
+        }
+      }
+    },
+    watch: { /* nothing to do in watch anymore */ }
 });
 
 grunt.registerTask('list','List your actions and metadata',function(){
@@ -110,6 +136,13 @@ grunt.registerTask('list','List your actions and metadata',function(){
       }
     }
     done();
+  });
+});
+
+grunt.registerTask('start', 'This will start the actionhero server', function() {
+  var done = this.async();
+  init(function(api) {
+
   });
 });
 
