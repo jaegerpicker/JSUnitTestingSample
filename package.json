@@ -42,7 +42,7 @@
     "json2htmlcov": "~0.1.1",
     "mongoose": "~3.8.8",
     "grunt-nodemon": "~0.2.1",
-    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-watch": "~1.0.1",
     "grunt-shell": "~0.6.4"
   }
 }
