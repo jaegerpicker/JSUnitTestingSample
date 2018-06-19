@@ -4,7 +4,9 @@
   "description": "A sample JavaScript (node.js sever side and ember.js client side) showing my prefered unit testing/js project setup style",
   "main": "",
   "scripts": {
-    "test": "testem"
+    "test": "testem",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -43,6 +45,8 @@
     "mongoose": "~3.8.8",
     "grunt-nodemon": "~0.2.1",
     "grunt-contrib-watch": "~0.6.1",
-    "grunt-shell": "~0.6.4"
-  }
+    "grunt-shell": "~0.6.4",
+    "snyk": "^1.83.0"
+  },
+  "snyk": true
 }
