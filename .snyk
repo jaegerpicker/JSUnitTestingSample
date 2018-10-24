@@ -1,0 +1,31 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.12.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:minimatch:20160620':
+    - grunt-testem > testem-multi > testem > fireworm > minimatch:
+        patched: '2018-10-24T02:47:51.029Z'
+    - grunt-regarde > gaze > fileset > glob > minimatch:
+        patched: '2018-10-24T02:47:51.029Z'
+    - grunt-testem > testem-multi > testem > fileset > glob > minimatch:
+        patched: '2018-10-24T02:47:51.029Z'
+    - grunt-testem > testem-multi > testem > tap > glob > minimatch:
+        patched: '2018-10-24T02:47:51.029Z'
+    - grunt-regarde > gaze > minimatch:
+        patched: '2018-10-24T02:47:51.029Z'
+    - actionhero > grunt-project-update > grunt > minimatch:
+        patched: '2018-10-24T02:47:51.029Z'
+    - actionhero > grunt-project-update > grunt > findup-sync > glob > minimatch:
+        patched: '2018-10-24T02:47:51.029Z'
+    - grunt-testem > testem-multi > testem > glob > minimatch:
+        patched: '2018-10-24T02:47:51.029Z'
+    - actionhero > grunt-project-update > grunt > glob > minimatch:
+        patched: '2018-10-24T02:47:51.029Z'
+    - grunt-regarde > gaze > fileset > minimatch:
+        patched: '2018-10-24T02:47:51.029Z'
+    - grunt-testem > testem-multi > testem > fileset > minimatch:
+        patched: '2018-10-24T02:47:51.029Z'
+  'npm:tunnel-agent:20170305':
+    - phantomjs > request > tunnel-agent:
+        patched: '2018-10-24T02:47:51.029Z'
